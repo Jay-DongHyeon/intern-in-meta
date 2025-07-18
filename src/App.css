@@ -1,12 +1,15 @@
+/* === 기본 설정 === */
 body {
   margin: 0;
   font-family: sans-serif;
+  background-color: #f9f9f9;
 }
 
 .App {
   padding: 0;
 }
 
+/* === 헤더 === */
 .header {
   display: flex;
   justify-content: space-between;
@@ -14,46 +17,99 @@ body {
   background: #333;
   color: white;
   padding: 1rem;
+  font-size: 1.1rem;
 }
 
+/* === 안내 문구 === */
 .subtext {
   padding: 1rem;
   font-weight: bold;
+  font-size: 1rem;
 }
 
+/* === 상품 그리드 === */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   padding: 1rem;
+  align-items: stretch;
 }
 
+/* === 상품 카드 === */
 .product-card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   background: white;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* === 이미지 === */
 .product-card img {
   width: 100%;
-  display: block;
+  height: 200px;
+  object-fit: cover;
 }
 
+/* === 정보 영역 === */
 .info {
-  padding: 0.5rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
 }
 
+.info strong,
+.info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info p:last-of-type {
+  font-weight: bold;
+  color: #222;
+}
+
+/* === 버튼 영역 === */
 .buttons {
   display: flex;
+  justify-content: space-between;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  padding: 0 0.8rem 0.8rem;
 }
 
-button {
-  background: yellow;
+/* === 버튼 디자인 === */
+.buttons button {
+  flex: 1;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
   border: none;
-  padding: 5px 10px;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+/* 담기 버튼 (왼쪽) */
+.buttons button:first-child {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 구매 버튼 (오른쪽) */
+.buttons button:last-child {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+.buttons button:hover {
+  opacity: 0.9;
 }
