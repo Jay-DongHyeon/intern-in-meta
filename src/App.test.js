@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom'; // 👈 이 줄 추가!
 import App from './App';
 
 describe('App 컴포넌트', () => {
