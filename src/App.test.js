@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom'; // 👈 이 줄 추가!
+import '@testing-library/jest-dom';
 import App from './App';
 
 describe('App 컴포넌트', () => {
@@ -19,6 +19,16 @@ describe('App 컴포넌트', () => {
     const addButton = screen.getAllByText('담기')[0];
     fireEvent.click(addButton);
     expect(screen.getByText(/🛒 1/)).toBeInTheDocument();
+    expect(screen.getAllByText('담김!')[0]).toBeInTheDocument();
+  });
+
+  test('"담김!" 버튼 클릭 시 장바구니 수량이 감소한다', () => {
+    render(<App />);
+    const addButton = screen.getAllByText('담기')[0];
+    fireEvent.click(addButton); // 담기
+    fireEvent.click(screen.getAllByText('담김!')[0]); // 취소
+    expect(screen.getByText(/🛒 0/)).toBeInTheDocument();
+    expect(screen.getAllByText('담기')[0]).toBeInTheDocument();
   });
 
   test('상품 카드가 모두 렌더링된다', () => {
