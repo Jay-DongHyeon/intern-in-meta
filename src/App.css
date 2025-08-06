@@ -1,64 +1,57 @@
-/* === 기본 설정 === */
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: #f9f9f9;
-}
-
+/* App 전체 */
 .App {
-  padding: 0;
+  text-align: center;
+  writing-mode: horizontal-tb;
+  font-family: sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* === 헤더 === */
+/* 상단 헤더 */
 .header {
-  display: flex;
+  display:flex;
   justify-content: space-between;
   align-items: center;
   background: #333;
-  color: white;
-  padding: 1rem;
-  font-size: 1.1rem;
+  color: #fff;
+  padding: 1rem 2rem;
 }
 
-/* === 안내 문구 === */
+.header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.cart-icon {
+  font-size: 1.2rem;
+}
+
+/* 안내 문구 */
 .subtext {
-  padding: 1rem;
-  font-weight: bold;
+  padding: 1rem 2rem;
   font-size: 1rem;
+  text-align: left;
 }
 
-/* === 상품 그리드 === */
+/* 상품 그리드 (4열 고정) */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  padding: 1rem;
-  align-items: stretch;
+  grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개 고정 */
+  gap: 1.5rem;
+  padding: 1rem 2rem;
 }
 
-@media (min-width: 640px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .product-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* === 상품 카드 === */
+/* 상품 카드 */
 .product-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background: white;
-  overflow: hidden;
-  height: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 350px; /* 카드 높이 통일 */
 }
 
 .product-card img {
@@ -67,62 +60,50 @@ body {
   object-fit: cover;
 }
 
-/* === 정보 영역 === */
-.info {
+.product-card .info {
+  padding: 1rem;
+  text-align: left;
+  flex: 1; /* 정보 영역이 카드 내부를 채우도록 */
+}
+
+.product-card .info strong {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.product-card .info p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+/* 버튼 영역 */
+.product-card .buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto; /* 버튼을 하단으로 밀기 */
+}
+
+.product-card .buttons button {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 0.8rem;
-}
-
-.info strong {
-  margin: 0.25rem 0;
-  font-size: 1rem;
-}
-
-.info p {
-  margin: 0.25rem 0;
-  font-size: 0.9rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.info p:last-of-type {
-  font-weight: bold;
-  color: #222;
-}
-
-/* === 버튼 영역 === */
-.buttons {
-  display: flex;
-  justify-content: center; /* 중앙 정렬 */
-  padding: 0 0.8rem 0.8rem;
-  margin-top: auto;
-}
-
-/* === 버튼 디자인 === */
-.buttons button {
-  min-width: 120px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 0.5rem 0;
   border: none;
-  border-radius: 999px;
+  border-radius: 20px;
+  font-weight: bold;
   cursor: pointer;
-  transition: opacity 0.2s ease;
-  background-color: #000;
+}
+
+/* 버튼 색상 */
+.product-card .buttons .add {
+  background: #000;
   color: #fff;
 }
 
-.buttons button:hover {
-  opacity: 0.9;
+.product-card .buttons .cancel {
+  background: #777;
+  color: #fff;
 }
 
-/* === 취소(담김) 상태 버튼 === */
-.buttons button.cancel {
-  background-color: #e0e0e0; /* 연한 회색 */
-  color: #000; /* 검은 글씨 */
+.product-card .buttons .buy {
+  background: #ffeb3b;
+  color: #000;
 }

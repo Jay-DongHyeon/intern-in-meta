@@ -1,0 +1,107 @@
+.card-list {
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  margin: 0 auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.card-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.card-list-header .close-btn {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.add-card-box {
+  width: 120px;
+  height: 80px;
+  margin: 1.5rem auto 0;
+  background: #e5e5e5;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-card-box .plus {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+/* 카드 아이템 */
+.card-item {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* 카드 UI */
+.card-ui {
+  width: 200px;
+  height: 120px;
+  margin: 0 auto;
+  background: #222;
+  border-radius: 8px;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-ui .chip {
+  width: 40px;
+  height: 28px;
+  background: gold;
+  border-radius: 4px;
+}
+
+.card-ui .card-number {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.card-ui .card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+/* 결제 버튼 */
+.pay-btn {
+  width: 200px;
+  margin: 0.5rem auto 0;
+  padding: 0.5rem 0;
+  background: #ffeb3b;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  opacity: 0.9;
+}
+
