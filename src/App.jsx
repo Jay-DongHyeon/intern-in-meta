@@ -2,40 +2,46 @@ import { useState } from 'react';
 import './App.css';
 import products from './products';
 import CardList from './CardList';
+import CartPage from './CartPage';
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [showCartPage, setShowCartPage] = useState(false);
   const [showCardPage, setShowCardPage] = useState(false);
 
+  const cartCount = cartItems.length;
+
   const handleToggleCart = (id) => {
-    if (cartItems.includes(id)) {
-      setCartItems((prev) => prev.filter((item) => item !== id));
-      setCartCount((prev) => prev - 1);
-    } else {
-      setCartItems((prev) => [...prev, id]);
-      setCartCount((prev) => prev + 1);
-    }
+    setCartItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
   };
 
-  const handleBuy = (product) => {
-    console.log(`${product.brand} - ${product.desc} 구매 버튼 클릭`);
-    setShowCardPage(true);
-  };
-
-  const handleCloseCardPage = () => {
-    setShowCardPage(false);
+  const handleBuy = () => {
+    setShowCartPage(true); // 구매 → 장바구니 페이지로 이동
   };
 
   return (
     <div className="App">
-      {showCardPage ? (
-        <CardList onClose={handleCloseCardPage} />
+      {showCartPage ? (
+        <CartPage
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          onBack={() => setShowCartPage(false)}
+          onCheckout={() => {
+            setShowCartPage(false);
+            setShowCardPage(true);
+          }}
+        />
+      ) : showCardPage ? (
+        <CardList onClose={() => setShowCardPage(false)} />
       ) : (
         <>
           <header className="header">
             <h1>신발 쇼핑몰입니다</h1>
-            <div className="cart-icon">🛒 {cartCount}</div>
+            <div className="cart-icon" onClick={() => setShowCartPage(true)}>
+              🛒 {cartCount}
+            </div>
           </header>
 
           <div className="subtext">
@@ -62,10 +68,7 @@ function App() {
                         >
                           {isInCart ? '담김!' : '담기'}
                         </button>
-                        <button
-                          onClick={() => handleBuy(p)}
-                          className="buy"
-                        >
+                        <button onClick={handleBuy} className="buy">
                           구매
                         </button>
                       </div>
